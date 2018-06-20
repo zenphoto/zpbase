@@ -43,6 +43,7 @@ include ('inc/header.php'); ?>
 					</div>
 					<div id="object-desc"><?php printAlbumDesc(); ?></div>
 					<?php if (function_exists('printGoogleMap')) { ?><div id="map-wrap"><?php printGoogleMap('Google Map',null,'hide'); ?></div><?php } ?>
+					<?php if (function_exists('printOpenStreetMap')) { ?><div id="map-wrap"><?php printOpenStreetMap(); ?></div><?php } ?>
 				</div>
 					
 				<?php if (isAlbumPage()) { ?>

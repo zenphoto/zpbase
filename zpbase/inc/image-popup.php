@@ -92,6 +92,7 @@ if (!defined('WEBPATH')) die();?>
 			} ?>
 			
 			<?php if (function_exists('printGoogleMap')) { ?><p id="map-wrap"><?php printGoogleMap('Google Map',null,'hide'); ?></p><?php } ?>
+			<?php if (function_exists('printOpenStreetMap')) { ?><div id="map-wrap"><?php printOpenStreetMap(); ?></div><?php } ?>
 			<?php if (getImageData('copyright')) { ?><p class="image-copy"><?php echo getImageData('copyright'); ?></p><?php } ?>
 			<?php if (getImageMetaData()) { ?><p><?php printImageMetadata('',false,'imagemetadata'); ?></p><?php } ?>
 			<?php if (function_exists('printRating')) { ?>
