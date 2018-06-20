@@ -95,6 +95,7 @@ include ('inc/header.php'); ?>
 					<?php } 
 					} ?>
 					<?php if (function_exists('printGoogleMap')) { ?><div id="map-wrap"><?php printGoogleMap('Google Map',null,'hide'); ?></div><?php } ?>
+					<?php if (function_exists('printOpenStreetMap')) { ?><div id="map-wrap"><?php printOpenStreetMap(); ?></div><?php } ?>
 				</div>
 				
 				<?php 
