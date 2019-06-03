@@ -3,7 +3,7 @@
 * 	This file (functions.php) is auto included when setting up the environment for each page, no need to include it manually.
 *	http://www.oswebcreations.com	
 ================================================== */
-// force UTF-8 Ø
+// force UTF-8 ï¿½
 
 // Check for lack of zenphoto setting thumb and image sizes until visiting theme option page (can't figure out why this is needed).
 if (!getOption('thumb_size')) { 
@@ -61,6 +61,7 @@ function my_checkPageValidity($request, $gallery_page, $page) {
 		case 'news.php':
 		case 'album.php':
 		case 'search.php':
+		case 'favorites.php':
 			break;
 	}
 	return checkPageValidity($request, $gallery_page, $page);
