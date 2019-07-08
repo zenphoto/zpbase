@@ -4,7 +4,7 @@
 // http://www.oswebcreations.com
 $theme_description['name'] = 'zpBase';
 $theme_description['author'] = 'gjr - oswebcreations.com';
-$theme_description['version'] = '1.2.1';
+$theme_description['version'] = '1.1.1';
 $theme_description['date'] = '7/8/19';
 $theme_description['desc'] = 'A Zenphoto/Zenpage loaded "base" starter theme, responsive, ready for custom styling or great as is.';
 ?>
