@@ -84,11 +84,11 @@ class ThemeOptions {
 		setThemeOption('thumb_size',round(.31 * (getOption('zpbase_maxwidth'))),null,'zpbase');
 		if (class_exists('cacheManager')) {
 			$me = basename(dirname(__FILE__));
-			cacheManager::deleteThemeCacheSizes($me);
-			cacheManager::addThemeCacheSize($me, getThemeOption('image_size'), NULL, NULL, NULL, NULL, NULL, NULL, false, getOption('fullimage_watermark'), NULL, NULL); // full image size
-			cacheManager::addThemeCacheSize($me, getThemeOption('thumb_size'), NULL, NULL, NULL, NULL, NULL, NULL, true, getOption('Image_watermark'), NULL, NULL); // default thumb
-			cacheManager::addThemeCacheSize($me, getThemeOption('zpbase_galbigsize'), NULL, NULL, NULL, NULL, NULL, NULL, false, getOption('fullimage_watermark'), NULL, NULL); //slideshow big image
-			cacheManager::addThemeCacheSize($me, NULL, NULL, getOption('zpbase_sds_maxheight'), NULL, NULL, NULL, NULL, true, getOption('Image_watermark'), NULL, NULL); //sds layout image	
+			cacheManager::deleteCacheSizes($me);
+			cacheManager::addCacheSize($me, getThemeOption('image_size'), NULL, NULL, NULL, NULL, NULL, NULL, false, getOption('fullimage_watermark'), NULL, NULL); // full image size
+			cacheManager::addCacheSize($me, getThemeOption('thumb_size'), NULL, NULL, NULL, NULL, NULL, NULL, true, getOption('Image_watermark'), NULL, NULL); // default thumb
+			cacheManager::addCacheSize($me, getThemeOption('zpbase_galbigsize'), NULL, NULL, NULL, NULL, NULL, NULL, false, getOption('fullimage_watermark'), NULL, NULL); //slideshow big image
+			cacheManager::addCacheSize($me, NULL, NULL, getOption('zpbase_sds_maxheight'), NULL, NULL, NULL, NULL, true, getOption('Image_watermark'), NULL, NULL); //sds layout image	
 		}
 	}
 	
