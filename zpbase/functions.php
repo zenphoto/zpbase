@@ -221,7 +221,7 @@ function printBaseSlideShowLink($linktext = null) {
 			$imagenumber = '';
 			$imagefile = '';
 			$albumnr = 0;
-			$slideshowlink = rewrite_path('/' . _PAGE_ . '/slideshow', "index.php?p=slideshow");
+			$slideshowlink = rewrite_path('/' . _PAGE_ . '/slideshow/', "index.php?p=slideshow");
 			$slideshowhidden = '<input type="hidden" name="preserve_search_params" value="' . html_encode($_zp_current_search->getSearchParams()) . '" />';
 		} else {
 			if (in_context(ZP_IMAGE)) {
@@ -238,9 +238,9 @@ function printBaseSlideShowLink($linktext = null) {
 				$albumnr = $_zp_current_album->getID();
 			}
 			if ($albumnr) {
-				$slideshowlink = rewrite_path(pathurlencode($_zp_current_album->getFileName()) . '/' . _PAGE_ . '/slideshow', "index.php?p=slideshow&amp;album=" . urlencode($_zp_current_album->getFileName()));
+				$slideshowlink = rewrite_path(pathurlencode($_zp_current_album->getFileName()) . '/' . _PAGE_ . '/slideshow/', "index.php?p=slideshow&amp;album=" . urlencode($_zp_current_album->getFileName()));
 			} else {
-				$slideshowlink = rewrite_path('/' . _PAGE_ . '/slideshow', "index.php?p=slideshow");
+				$slideshowlink = rewrite_path('/' . _PAGE_ . '/slideshow/', "index.php?p=slideshow");
 				$slideshowhidden = '<input type="hidden" name="favorites_page" value="1" />';
 			}
 		}
@@ -311,7 +311,7 @@ function printBaseSlideShowLink($linktext = null) {
 		} else {
 			if (isset($_POST['favorites_page'])) {
 				$albumobj = $_myFavorites;
-				$returnpath = rewrite_path($_myFavorites->getLink() . '/' . $pagenumber, FULLWEBPATH . '/index.php?p=favorites' . '&page=' . $pagenumber);
+				$returnpath = rewrite_path($_myFavorites->getLink() . '/' . $pagenumber . '/', FULLWEBPATH . '/index.php?p=favorites' . '&page=' . $pagenumber);
 				$albumtitle = gettext('Favorites');
 			} else {
 				$albumq = query_single_row("SELECT title, folder FROM " . prefix('albums') . " WHERE id = " . $albumid);
