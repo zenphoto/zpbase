@@ -151,9 +151,9 @@ if (!defined('WEBPATH')) die();?>
 	<script src="<?php echo $_zp_themeroot; ?>/js/zpbase_js.js"></script>
 	
 	<link rel="shortcut icon" href="<?php echo $_zp_themeroot; ?>/images/favicon.ico">
-	<link rel="apple-touch-icon-precomposed" href="<?php echo $_zp_themeroot; ?>/favicon-152.png">
+	<link rel="apple-touch-icon-precomposed" href="<?php echo $_zp_themeroot; ?>/images/favicon-152.png">
 	<meta name="msapplication-TileColor" content="#ffffff">
-	<meta name="msapplication-TileImage" content="<?php echo $_zp_themeroot; ?>/favicon-144.png">
+	<meta name="msapplication-TileImage" content="<?php echo $_zp_themeroot; ?>/images/favicon-144.png">
 	
 	<?php if (getOption('zpbase_googlefont1') != null) { 
 	$googlefontstack1 = str_replace('+',' ',getOption('zpbase_googlefont1')); ?>
