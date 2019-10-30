@@ -107,8 +107,8 @@ if (!defined('WEBPATH')) die();?>
 	// Mobile Menu
 	$(function() {
 		var navicon = $('#nav-icon');
-		menu = $('#nav');
-		menuHeight	= menu.height();
+		var menu = $('#nav');
+		var menuHeight	= menu.height();
 		$(navicon).on('click', function(e) {
 			e.preventDefault();
 			menu.slideToggle();

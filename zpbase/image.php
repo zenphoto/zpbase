@@ -24,8 +24,8 @@ include ('inc/header.php'); ?>
 					<?php if (getOption('zpbase_verticalscale')) { ?>
 					<script>
 						function resizeFullImageDiv() {
-							vpw = $(window).width();
-							vph = $(window).height()*(.60);
+							var vpw = $(window).width();
+							var vph = $(window).height()*(.60);
 							if (vph > <?php echo getOption('image_size'); ?>) { vph = <?php echo getOption('image_size'); ?>; }
 							if (vph < vpw) { 
 								$('#image-full').css({'height': vph + 'px'}); 
