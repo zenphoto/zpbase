@@ -16,6 +16,7 @@ if (!defined('WEBPATH')) die();
 	<meta charset="<?php echo LOCAL_CHARSET; ?>" />
 	<meta name="viewport" content="width=device-width" />
 	<title><?php echo gettext('Slideshow').' | '.getBareGalleryTitle(); ?></title>
+	<link rel="stylesheet" type="text/css" href="<?php echo $_zp_themeroot; ?>/js/galleria/themes/classic/galleria.classic.min.css" />
 	<link rel="stylesheet" href="<?php echo $_zp_themeroot; ?>/css/style.css" type="text/css" />
 </head>
 <body id="dark" class="sspage">

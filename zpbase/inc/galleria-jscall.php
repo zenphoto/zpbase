@@ -4,9 +4,9 @@
 *	http://www.oswebcreations.com
 ================================================== */
 ?>
-<script src="<?php echo $_zp_themeroot; ?>/js/galleria-1.3.5.min.js"></script>
-<script src="<?php echo $_zp_themeroot; ?>/js/galleria.classic.min.js"></script>
-<?php if (getOption('zpbase_galhistory')) { ?><script src="<?php echo $_zp_themeroot; ?>/js/galleria.history.min.js"></script><?php } ?>			
+<script src="<?php echo $_zp_themeroot; ?>/js/galleria/galleria.min.js"></script>
+<script src="<?php echo $_zp_themeroot; ?>/js/galleria/themes/classic/galleria.classic.min.js"></script>
+<?php if (getOption('zpbase_galhistory')) { ?><script src="<?php echo $_zp_themeroot; ?>/js/galleria/plugins/history/galleria.history.min.js"></script><?php } ?>			
 				
 <script>
 	Galleria.run('#galleria', {
