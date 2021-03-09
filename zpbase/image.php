@@ -45,11 +45,16 @@ include ('inc/header.php'); ?>
 					// The following checks and modifications of breadcrumb link backs are necessary when using an album layout without pagination, since default behaviour is to provide a link back to the album page the image is on.
 					$linkbackpaged = true;
 					if (function_exists('getSelectedLayout')) {
-					$albumlayout = getSelectedLayout($_zp_current_album,'multiple_layouts_albums');
+						$albumlayout = getSelectedLayout($_zp_current_album,'multiple_layouts_albums');
 					} else {
-					$albumlayout = array('data'=>'');
+						$albumlayout = array('data'=>'');
 					}
-					if (($albumlayout['data'] == 'album-masonry.php') || ($albumlayout['data'] == 'album-galleria.php') || (getOption('zpbase_defaultalbum') == 'album-galleria') || (getOption('zpbase_defaultalbum') == 'album-masonry')) { $linkbackpaged = false; if (in_context(ZP_SEARCH_LINKED)) $_zp_current_search->page = '1'; }
+					if (is_array($albumlayout) && (($albumlayout['data'] == 'album-masonry.php') || ($albumlayout['data'] == 'album-galleria.php')) || (getOption('zpbase_defaultalbum') == 'album-galleria') || (getOption('zpbase_defaultalbum') == 'album-masonry')) { 
+						$linkbackpaged = false; 
+						if (in_context(ZP_SEARCH_LINKED)) { 
+							$_zp_current_search->page = '1'; 
+						}
+					}
 					?>
 					<div id="object-title">
 						<div id="breadcrumb">
