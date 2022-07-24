@@ -959,8 +959,7 @@ button::-moz-focus-inner {
   padding-bottom: 40px; }
   .mfp-iframe-holder .mfp-content {
     line-height: 0;
-    width: 100%;
-    max-width: 900px; }
+    width: 85%; }
   .mfp-iframe-holder .mfp-close {
     top: -40px; }
 
