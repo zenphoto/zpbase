@@ -25,7 +25,7 @@ include ('inc/header.php'); ?>
 					<script>
 						function resizeFullImageDiv() {
 							var vpw = $(window).width();
-							var vph = $(window).height()*(.60);
+							var vph = $(window).height() - $('#top').outerHeight(true) - parseInt($('#image-full').css('margin-top'),10) - parseInt($('#image-full').css('margin-bottom'),10);
 							if (vph > <?php echo getOption('image_size'); ?>) { vph = <?php echo getOption('image_size'); ?>; }
 							if (vph < vpw) { 
 								$('#image-full').css({'height': vph + 'px'}); 
