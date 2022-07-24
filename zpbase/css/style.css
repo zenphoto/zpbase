@@ -56,7 +56,7 @@ clear:both;
 position:relative;    
 max-width:1000px; /* This sets the width of the website. Theme option will override this declaration. */    
 margin:0 auto;
-padding:25px;
+padding:5px;
 }
 .row:after{
 content:"";
@@ -83,11 +83,11 @@ hr{border:0;border-top:1px solid #ddd;clear:both;margin:20px 0;height:0;position
 /* ---- Fluid Images ---- */
 img.remove-attributes{max-width:100%;height:auto;max-height:100%;}
 
-#header h1{font-size:300%;}
+#header h1{font-size:300%;margin:0.34em 0;}
 #logo{text-decoration:none;}
 
 /* ---- Main Menu ---- */
-#nav{list-style:none;margin:0 0 35px;padding:0;}
+#nav{list-style:none;margin:0 0 5px;padding:0;}
 #nav li{display:inline-block;margin-right:10px;}
 #nav li ul{display:none;}
 #nav a,#nav-icon{
@@ -102,7 +102,7 @@ img.remove-attributes{max-width:100%;height:auto;max-height:100%;}
 #nav li.active a,#nav a.active{font-weight:bold;color:#000;}
 #dark #nav li.active a,#dark #nav a.active{color:#fff;}
 
-#object-info{text-align:center;margin-bottom:40px;position:relative;padding:0 20px;}
+#object-info{text-align:center;margin-bottom:20px;position:relative;padding:0 20px;}
 #object-title{}
 #object-title #breadcrmbs{}
 #object-title h1{margin:0.5em 0;}
