@@ -12,7 +12,7 @@ if (!defined('WEBPATH')) die();
 <?php if (getOption('zpbase_galss')) { ?>
 
 <head>
-	<script src="<?php echo FULLWEBPATH . "/" . ZENFOLDER; ?>/js/jquery.js"></script>
+	<script src="<?php echo FULLWEBPATH . "/" . ZENFOLDER; ?>/js/jquery.min.js"></script>
 	<meta charset="<?php echo LOCAL_CHARSET; ?>" />
 	<meta name="viewport" content="width=device-width" />
 	<title><?php echo gettext('Slideshow').' | '.getBareGalleryTitle(); ?></title>
