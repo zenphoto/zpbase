@@ -260,7 +260,7 @@ class ThemeOptions {
 								gettext('Landscape')=>'landscape', 
 								gettext('Portrait')=>'portrait'
 								),
-				'desc' => gettext("Select how Galleria should fit the images in the Galleria stage.  See <a href=\"http://galleria.io/docs/options/imageCrop/\" target=\"_blank\">Galleria options</a> for more info.")),
+				'desc' => gettext("Select how Galleria should fit the images in the Galleria stage.  See <a href=\"https://galleriajs.github.io/docs/options/imageCrop.html\" target=\"_blank\">Galleria options</a> for more info.")),
 			gettext('Galleria Image pan') => array('key' => 'zpbase_galpan', 'type' => OPTION_TYPE_CHECKBOX, 
 				'order' => 33,
 				'desc' => gettext("Check to allow image panning on cropped images.")),
