@@ -18,7 +18,7 @@
 		<?php } else { ?>
 		clicknext: <?php if (getOption('zpbase_galclicknext')) { echo 'true'; } else { echo 'false'; } ?>,					
 		autoplay: <?php if (getOption('zpbase_galautoplay') && (is_numeric(getOption('zpbase_galinterval')))) { echo getOption('zpbase_galinterval'); } elseif (getOption('zpbase_galautoplay')) { echo '4000'; } else { echo 'false'; } ?>,
-		height: 0.81,
+		height: $(window).height()-$('#top').outerHeight(true)-$('#object-info').outerHeight(true),
 		<?php } ?>
 		<?php if ($isMobile) { ?>
 		thumbnails: false,
@@ -84,6 +84,15 @@
 		<?php if ((getOption('zpbase_galcaption')) || ($isMobile)) echo 'this.$(\'info-link\').click();'; ?>
 		$('.galleria-container').append('<div id="galleria-custom-controls"><?php if ($sspage) { ?><a id="galleria-control-return" title="<?php echo html_encode($albumtitle).'&raquo; '.gettext('Return'); ?>" href="<?php echo html_encode($returnpath); ?>"><span></span></a><?php } ?><a id="galleria-control-play" href="#"><span></span></a><a id="galleria-control-pause" href="#"><span></span></a><a href="#" id="galleria-control-fullscreen"><span></span></a></div>');
 	});
+	
+	function resizeGalleria() {
+		var h=$(window).height()-$('#top').outerHeight(true)-$('#object-info').outerHeight(true);
+		Galleria.get(0).setOptions('height', h).rescale();
+	}
+	
+	window.onresize = function(event) {
+		resizeGalleria();
+	}
 </script>
 <?php if ((getOption('zpbase_galautoplay')) || ($sspage)) { ?> <style>#galleria-custom-controls a#galleria-control-play{display:none;}#galleria-custom-controls a#galleria-control-pause{display:block;}</style> <?php } ?>
 	
