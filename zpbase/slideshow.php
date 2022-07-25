@@ -12,8 +12,8 @@ if (!defined('WEBPATH')) die();
 <?php if (getOption('zpbase_galss')) { ?>
 
 <head>
-	<script src="<?php echo FULLWEBPATH . "/" . ZENFOLDER; ?>/js/jquery.min.js"></script>
 	<meta charset="<?php echo LOCAL_CHARSET; ?>" />
+	<?php zp_apply_filter('theme_head'); ?>
 	<meta name="viewport" content="width=device-width" />
 	<title><?php echo gettext('Slideshow').' | '.getBareGalleryTitle(); ?></title>
 	<link rel="stylesheet" type="text/css" href="<?php echo $_zp_themeroot; ?>/js/galleria/themes/classic/galleria.classic.min.css" />
