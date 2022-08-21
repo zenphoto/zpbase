@@ -239,7 +239,7 @@ if (!defined('WEBPATH')) die();?>
 					<?php } ?>
 					<?php if (getOption('zpbase_archive')) { ?>
 					<li <?php if (($_zp_gallery_page == "archive.php") || ($_zp_gallery_page == "search.php")) { ?>class="active" <?php } ?>>
-						<a href="<?php echo getCustomPageURL('archive'); ?>" title="<?php echo gettext('Search/Archive'); ?>"><?php echo gettext('Search/Archive'); ?></a>
+						<a href="<?php echo getCustomPageURL('archive'); ?>" title="<?php echo gettext('Search')."/".gettext('Archive'); ?>"><?php echo gettext('Search')."/".gettext('Archive'); ?></a>
 					</li>
 					<?php } ?>
 					<?php if (function_exists('printContactForm')) { ?>
