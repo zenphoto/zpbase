@@ -103,6 +103,7 @@ img.remove-attributes{max-width:100%;height:auto;max-height:100%;}
 #dark #nav li.active a,#dark #nav a.active{color:#fff;}
 
 #object-info{text-align:center;margin-bottom:20px;position:relative;padding:0 20px;}
+#object-info-img-bottom{text-align:center;margin-bottom:20px;position:relative;padding:0 20px;}
 #object-title{}
 #object-title #breadcrmbs{}
 #object-title h1{margin:0.5em 0;}

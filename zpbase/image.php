@@ -12,34 +12,6 @@ include ('inc/header.php'); ?>
 	<div class="container" id="middle">
 		<div class="row">
 			<div id="content">
-				<div id="image-full" class="block clearfix">
-					<div id="single-img-nav"<?php if (isImageVideo()) echo ' class="video-nav"'; ?>>
-						<?php if (hasPrevImage()) { ?>
-						<a class="prev-link" href="<?php echo html_encode(getPrevImageURL());?>" title="<?php echo gettext("Previous Image"); ?>"><span></span></a>
-						<?php } if (hasNextImage()) { ?>
-						<a class="next-link" href="<?php echo html_encode(getNextImageURL());?>" title="<?php echo gettext("Next Image"); ?>"><span></span></a>
-						<?php } ?>
-					</div>
-					<?php printDefaultSizedImage(getBareImageTitle(),'remove-attributes'); ?>
-					<?php if (getOption('zpbase_verticalscale')) { ?>
-					<script>
-						function resizeFullImageDiv() {
-							var vpw = $(window).width();
-							var vph = $(window).height() - $('#top').outerHeight(true) - parseInt($('#image-full').css('margin-top'),10) - parseInt($('#image-full').css('margin-bottom'),10);
-							if (vph > <?php echo getOption('image_size'); ?>) { vph = <?php echo getOption('image_size'); ?>; }
-							if (vph < vpw) { 
-								$('#image-full').css({'height': vph + 'px'}); 
-							} else {
-								$('#image-full').css({'height': 'auto'}); 
-							}
-						}
-						resizeFullImageDiv();
-						window.onresize = function(event) {
-							resizeFullImageDiv();
-						}
-					</script>
-					<?php } ?>
-				</div>
 				<div id="object-info">
 					<?php 
 					// The following checks and modifications of breadcrumb link backs are necessary when using an album layout without pagination, since default behaviour is to provide a link back to the album page the image is on.
@@ -68,8 +40,40 @@ include ('inc/header.php'); ?>
 							<?php } ?>
 							<span>(<em><?php echo imageNumber().' of '.getNumImages(); ?></em>)</span>
 						</div>
-						<h1 class="notop"><?php printImageTitle(); ?></h1>
+						<h2 class="notop"><?php printImageTitle(); ?></h2>
 					</div>
+				</div>
+
+
+				<div id="image-full" class="block clearfix">
+					<div id="single-img-nav"<?php if (isImageVideo()) echo ' class="video-nav"'; ?>>
+						<?php if (hasPrevImage()) { ?>
+						<a class="prev-link" href="<?php echo html_encode(getPrevImageURL());?>" title="<?php echo gettext("Previous Image"); ?>"><span></span></a>
+						<?php } if (hasNextImage()) { ?>
+						<a class="next-link" href="<?php echo html_encode(getNextImageURL());?>" title="<?php echo gettext("Next Image"); ?>"><span></span></a>
+						<?php } ?>
+					</div>
+					<?php printDefaultSizedImage(getBareImageTitle(),'remove-attributes'); ?>
+					<?php if (getOption('zpbase_verticalscale')) { ?>
+					<script>
+						function resizeFullImageDiv() {
+							var vpw = $(window).width();
+							var vph = $(window).height() - $('#top').outerHeight(true) - $('#object-info').outerHeight(true) - parseInt($('#image-full').css('margin-top'),10) - parseInt($('#image-full').css('margin-bottom'),10);
+							if (vph > <?php echo getOption('image_size'); ?>) { vph = <?php echo getOption('image_size'); ?>; }
+							if (vph < vpw) { 
+								$('#image-full').css({'height': vph + 'px'}); 
+							} else {
+								$('#image-full').css({'height': 'auto'}); 
+							}
+						}
+						resizeFullImageDiv();
+						window.onresize = function(event) {
+							resizeFullImageDiv();
+						}
+					</script>
+					<?php } ?>
+				</div>
+				<div id="object-info-img-bottom">
 					<div id="object-menu">
 						<?php if (getOption('zpbase_date_images')) { ?><span><?php printImageDate(); ?></span><?php } ?>
 						<?php if (getOption('zpbase_social')) include ('inc/socialshare.php'); ?>
