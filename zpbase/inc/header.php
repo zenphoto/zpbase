@@ -95,7 +95,8 @@ if (!defined('WEBPATH')) die();?>
 			$zpbase_metadesc = truncate_string(getBareGalleryDesc(),150,'...');
 			$objectclass = null;
 			break;
-	} 
+	}
+
 	// Print the defined RSS header links, title, and description
 	if ((class_exists('RSS')) && ($rss_option != null)) printRSSHeaderLink($rss_option,$rss_title); ?>
 	<?php printHeadTitle(); ?>
@@ -252,3 +253,6 @@ if (!defined('WEBPATH')) die();?>
 			</div>
 		</div>
 	</div>
+
+
+

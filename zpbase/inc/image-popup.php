@@ -75,6 +75,49 @@ if (!defined('WEBPATH')) die();?>
 					$('.remove-attributes').fadeIn();
 				});
 			</script>
+
+			<script>
+				var imgh = <?php echo getFullHeight() ?>;
+				var imgw = <?php echo getFullWidth() ?>;
+
+				function resizeFullImageDiv() {
+					var vpw = $(window).width()
+					    - $('#image-popup-info').outerWidth(true);
+					var vph = $(window).height();
+
+					var scalefactor = Math.min(vpw/imgw, vph/imgh);
+					var w = (imgw*scalefactor).toFixed();
+					var h = (imgh*scalefactor).toFixed();
+					$('div#image-full').css({'height': h+'px'});
+					$('div#image-full img.remove-attributes').attr('height', h);
+					$('div#image-full img.remove-attributes').attr('width', w);
+					if ($('video').length) {
+						$('video').css({'height': h+'px'});
+						$('video').css({'width': w+'px'});
+					}
+				}
+
+				window.onresize = function(event) {
+					resizeFullImageDiv();
+				}
+
+				$(document).ready(function(){
+				resizeFullImageDiv();
+
+				$('video').bind("loadedmetadata", function() {
+					imgh = this.videoHeight;
+					imgw = this.videoWidth;
+					resizeFullImageDiv();
+				});
+
+				// for HTML5 videos enable metadata preloading
+				$('video').not(['preload']).each(function(){
+					$(this).attr('preload','metadata');
+					this.load();
+				});
+			    });
+			</script>
+
 		</div>
 		<div id="image-popup-info">
 			<div><?php echo imageNumber().' of '.getNumImages(); ?> <em>in</em> <?php echo $_zp_current_album->getTitle(); ?></div>

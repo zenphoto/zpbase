@@ -44,7 +44,6 @@ include ('inc/header.php'); ?>
 					</div>
 				</div>
 
-
 				<div id="image-full" class="block clearfix">
 					<div id="single-img-nav"<?php if (isImageVideo()) echo ' class="video-nav"'; ?>>
 						<?php if (hasPrevImage()) { ?>
@@ -56,23 +55,48 @@ include ('inc/header.php'); ?>
 					<?php printDefaultSizedImage(getBareImageTitle(),'remove-attributes'); ?>
 					<?php if (getOption('zpbase_verticalscale')) { ?>
 					<script>
+						var imgh = <?php echo getFullHeight() ?>;
+						var imgw = <?php echo getFullWidth() ?>;
 						function resizeFullImageDiv() {
 							var vpw = $(window).width();
-							var vph = $(window).height() - $('#top').outerHeight(true) - $('#object-info').outerHeight(true) - parseInt($('#image-full').css('margin-top'),10) - parseInt($('#image-full').css('margin-bottom'),10);
-							if (vph > <?php echo getOption('image_size'); ?>) { vph = <?php echo getOption('image_size'); ?>; }
-							if (vph < vpw) { 
-								$('#image-full').css({'height': vph + 'px'}); 
-							} else {
-								$('#image-full').css({'height': 'auto'}); 
+							var vph = $(window).height()
+							    - $('#top').outerHeight(true)
+							    - $('#object-info').outerHeight(true)
+							    - parseInt($('#image-full').css('margin-top'),10)
+							    - parseInt($('#image-full').css('margin-bottom'),10);
+							var scalefactor = Math.min(vpw/imgw, vph/imgh);
+							var w = (imgw*scalefactor).toFixed();
+							var h = (imgh*scalefactor).toFixed();
+							$('#image-full').css({'height': h+'px'});
+							if ($('video').length) {
+							    $('video').css({'height': h+'px'});
+							    $('video').css({'width': w+'px'});
 							}
 						}
-						resizeFullImageDiv();
+
 						window.onresize = function(event) {
 							resizeFullImageDiv();
 						}
+						
+						$(document).ready(function(){
+							resizeFullImageDiv();
+
+							$('video').bind("loadedmetadata", function() {
+							    imgh = this.videoHeight;
+							    imgw = this.videoWidth;
+							    resizeFullImageDiv();
+							});
+
+							// for HTML5 videos enable metadata preloading
+							$('video').not(['preload']).each(function(){
+								$(this).attr('preload','metadata');
+								this.load();
+							});
+						});
 					</script>
 					<?php } ?>
 				</div>
+
 				<div id="object-info-img-bottom">
 					<div id="object-menu">
 						<?php if (getOption('zpbase_date_images')) { ?><span><?php printImageDate(); ?></span><?php } ?>
@@ -99,7 +123,6 @@ include ('inc/header.php'); ?>
 					<?php printCodeblock(); ?>
 					
 					<?php if (getImageMetaData()) { ?><p><?php printImageMetadata('',false,'imagemetadata'); ?></p><?php } ?>
-					
 				</div>
 				
 				<div class="jump center">
@@ -115,7 +138,6 @@ include ('inc/header.php'); ?>
 				<?php if (getOption('zpbase_disqus')) { ?><div class="block"><?php printDisqusCommentForm(); ?></div>
 				<?php } elseif (function_exists('printCommentForm')) { ?><div class="block"><?php printCommentForm(); ?></div><?php } ?>
 				<?php if (function_exists('printRelatedItems')) { ?><div class="block"><?php printRelatedItems(5,'pages',null,null,'pages'); ?></div><?php } ?>
-				
 			</div>
 		</div>
 	</div>

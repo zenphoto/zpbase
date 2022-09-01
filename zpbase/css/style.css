@@ -1364,3 +1364,9 @@ margin:0;
     h2,h3{page-break-after:avoid;}
 }
 
+/* ---- HTML5 Video ---- */
+video {
+    max-width:calc(100% - 64px - 25px); /* Leave some space left and right for the prev/next navigation, as videos are in front of them */
+    position:relative;
+    z-index:1;
+}
