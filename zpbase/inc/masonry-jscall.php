@@ -46,6 +46,7 @@ $(document).ready(function(){
 			$(".masonry-style-padding img").addClass("remove-attributes");
 			$newElems.animate({ opacity: 1 });
 			$container.masonry( 'appended', $newElems, true ); 
+			$container.masonry( 'layout' );
 			<?php if (getOption('zpbase_magnific_target') == 'imagepage') { ?>
 			$('a.masonry-image-popup').magnificPopup({
 				type: 'iframe'
