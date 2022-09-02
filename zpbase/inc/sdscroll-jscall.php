@@ -5,7 +5,7 @@
 ================================================== */
 ?>
 <script src="<?php echo $_zp_themeroot; ?>/js/imagesloaded.pkgd.min.js"></script>
-<script src="<?php echo $_zp_themeroot; ?>/js/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
+<script src="<?php echo $_zp_themeroot; ?>/js/jquery-ui-1.13.2.custom.min.js" type="text/javascript"></script>
 <script src="<?php echo $_zp_themeroot; ?>/js/jquery.mousewheel.min.js" type="text/javascript"></script>
 <script src="<?php echo $_zp_themeroot; ?>/js/jquery.kinetic.min.js" type="text/javascript"></script>
 <script src="<?php echo $_zp_themeroot; ?>/js/jquery.smoothdivscroll-1.3-min.js" type="text/javascript"></script>
