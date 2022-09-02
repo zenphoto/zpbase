@@ -211,7 +211,7 @@ if (!defined('WEBPATH')) die();?>
 			<div id="header">
 				<?php if (getOption('zpbase_pnglogo') != '') { ?>
 				<a id="logo" href="<?php echo html_encode(getGalleryIndexURL()); ?>"><img class="remove-attributes" src="<?php echo pathurlencode(WEBPATH.'/'.UPLOAD_FOLDER.'/'.getOption('zpbase_pnglogo')); ?>" alt="<?php printGalleryTitle(); ?>" /></a>
-				<?php } else { ?>
+				<?php } elseif (getGalleryTitle() != '') { ?>
 				<h1><a id="logo" href="<?php echo html_encode(getGalleryIndexURL()); ?>"><?php printGalleryTitle(); ?></a></h1>
 				<?php } ?>
 				<ul id="nav">
