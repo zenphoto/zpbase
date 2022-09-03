@@ -284,7 +284,7 @@ border-radius:45px;
 
 #image-popup #image-full,#image-popup-info{position:absolute;top:0;bottom:0;overflow:hidden;}
 #image-popup #image-full {width:60%;left:0;right:auto;margin:0;background:#000 url(../images/classic-loader.gif) no-repeat center center;}
-#image-popup-info{width:40%;left:auto;right:0;overflow-y:auto;padding:20px;background:#fff;}
+#image-popup-info{width:40%;left:auto;right:0;overflow-y:auto;padding:20px;}
 #image-popup #image-full img{
 	width:auto;max-width:100%;
 	height:auto;max-height:100%;

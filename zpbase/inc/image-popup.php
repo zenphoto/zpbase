@@ -36,7 +36,7 @@ if (!defined('WEBPATH')) die();?>
 	</style>
 	<base target="_parent">
 </head>
-<body class="image-popup-page <?php echo $objectclass.' '.$layoutbodyclass; ?>">
+<body id="<?php echo getOption('zpbase_style'); ?>" class="image-popup-page <?php echo $objectclass.' '.$layoutbodyclass; ?>">
 	<?php if ( (getOption('zpbase_analytics')) && (!zp_loggedin(ADMIN_RIGHTS)) ) { ?>
 	<script>
 		<?php if (getOption('zpbase_analytics_type') == 'universal') { ?>
