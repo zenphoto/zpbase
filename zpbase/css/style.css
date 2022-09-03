@@ -264,7 +264,7 @@ border-radius:45px;
 .prev-link{left:10px;}
 .next-link{right:10px;}
 #single-img-nav a span{position:absolute;top:45%;width:16px;height:30px;opacity:0.3;background-image:url(../images/classic-map-invert.png);}
-#dark #single-img-nav a span{background-image:url(../images/classic-map.png);}
+#dark #single-img-nav a span, .image-popup-page #single-img-nav a span{background-image:url(../images/classic-map.png);}
 #single-img-nav a.prev-link span{background-position:0 0;left:0;}
 #single-img-nav a.next-link span{background-position:-300px 0;right:0;}
 #single-img-nav a:hover span{opacity:1;}
