@@ -75,7 +75,7 @@ include ('inc/header.php'); ?>
 								printImageThumb(getBareImageTitle(),'remove-attributes'); 
 								} ?>
 							</a>
-							<?php } elseif (isImagePhoto($_zp_current_image)) { ?>
+							<?php } elseif ($_zp_current_image->isPhoto()) { ?>
 							<a title="<?php echo getBareImageTitle(); ?>" class="image-popup" <?php if (!(getOption('zpbase_nodetailpage'))) { ?>data-source="<?php echo html_encode(getImageURL()); ?>" <?php } ?>href="<?php echo htmlspecialchars(getDefaultSizedImage()); ?>"><?php printImageThumb(getBareImageTitle(),'remove-attributes'); ?></a>
 							<?php } else { ?>
 								<?php if (getOption('thumb_crop')) {

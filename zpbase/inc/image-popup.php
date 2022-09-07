@@ -62,7 +62,7 @@ if (!defined('WEBPATH')) die();?>
 	
 	<div id="image-popup">
 		<div id="image-full" class="block clearfix">
-			<div id="single-img-nav"<?php if (isImageVideo()) echo ' class="video-nav"'; ?>>
+			<div id="single-img-nav"<?php if ($_zp_current_image->isVideo()) echo ' class="video-nav"'; ?>>
 				<?php if (hasPrevImage()) { ?>
 				<a class="prev-link" target="_self" href="<?php echo html_encode(getPrevImageURL());?>?show=imagepage" title="<?php echo gettext("Previous Image"); ?>"><span></span></a>
 				<?php } if (hasNextImage()) { ?>

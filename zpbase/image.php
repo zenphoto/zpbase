@@ -45,7 +45,7 @@ include ('inc/header.php'); ?>
 				</div>
 
 				<div id="image-full" class="block clearfix">
-					<div id="single-img-nav"<?php if (isImageVideo()) echo ' class="video-nav"'; ?>>
+					<div id="single-img-nav"<?php if ($_zp_current_image->isVideo()) echo ' class="video-nav"'; ?>>
 						<?php if (hasPrevImage()) { ?>
 						<a class="prev-link" href="<?php echo html_encode(getPrevImageURL());?>" title="<?php echo gettext("Previous Image"); ?>"><span></span></a>
 						<?php } if (hasNextImage()) { ?>
@@ -103,7 +103,7 @@ include ('inc/header.php'); ?>
 						<?php if (getOption('zpbase_social')) include ('inc/socialshare.php'); ?>
 						<?php if (getOption('zpbase_download')) { ?><span><a href="<?php echo html_encode(getFullImageURL()); ?>" title="<?php echo gettext('Download'); ?>"><?php echo gettext('Download').' ('.getFullWidth().' x '.getFullHeight().')'; ?></a></span><?php } ?>
 						<?php if (getOption('zpbase_galss')) { 
-						if (isImagePhoto()) { ?><span><?php printBaseSlideShowLink(); ?></span><?php } ?>
+						if ($_zp_current_image->isPhoto()) { ?><span><?php printBaseSlideShowLink(); ?></span><?php } ?>
 						<?php } elseif (function_exists('printSlideShowLink')) { ?>
 						<span><?php printSlideShowLink(); ?></span>
 						<?php } ?>

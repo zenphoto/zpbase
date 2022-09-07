@@ -38,7 +38,7 @@
 						$images = getImageStatistic(getOption('zpbase_galhomecount'),'latest');
 						$c=0;
 						foreach ($images as $image) {
-						if (isImagePhoto($image)) {
+						if ($image->isPhoto()) {
 						makeImageCurrent($image);
 						if ($c==0) { echo '{'."\n"; } else { echo ',{'."\n"; }
 						echo 'thumb: \''.getImageThumb().'\','."\n";

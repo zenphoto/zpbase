@@ -35,7 +35,7 @@ include ('header.php'); ?>
 					require_once(SERVERPATH.'/'.ZENFOLDER.'/'.PLUGIN_FOLDER.'/image_album_statistics.php');
 					$images = getImageStatistic(getOption('zpbase_galhomecount'),'latest');
 					foreach ($images as $image) {
-					if (isImagePhoto($image)) {
+					if ($image->isPhoto()) {
 					makeImageCurrent($image); ?>
 					<div class="sdscroll-item">
 						<?php if (getOption('zpbase_nodetailpage')) { 
@@ -45,7 +45,7 @@ include ('header.php'); ?>
 							<?php printCustomSizedImage(getBareImageTitle(),null,null,getOption('zpbase_sds_maxheight'),null,null,null,null,'remove-attributes',null,true); ?>
 						</a>
 						<?php } ?>
-						<?php if ( ((getOption('zpbase_magnific_sds')) || (getOption('zpbase_nodetailpage'))) && (isImagePhoto($_zp_current_image)) ) { ?> 
+						<?php if ( ((getOption('zpbase_magnific_sds')) || (getOption('zpbase_nodetailpage'))) && ($_zp_current_image->isPhoto()) ) { ?> 
 						<a title ="<?php echo getBareImageTitle(); ?>" class="image-popup" <?php if (!(getOption('zpbase_nodetailpage'))) { ?>data-source="<?php echo html_encode(getImageURL()); ?>" <?php } ?>href="<?php echo htmlspecialchars(getDefaultSizedImage()); ?>"><img src="<?php echo $_zp_themeroot; ?>/images/zoom-in-2-n.png" alt="<?php echo gettext('Preview Image'); ?>" /></a>
 						<?php } ?>
 					</div>

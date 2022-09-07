@@ -65,7 +65,7 @@ include ('inc/header.php'); ?>
 						endwhile; 
 						}
 						while (next_image(true)):
-						if (isImagePhoto($_zp_current_image)) {						
+						if ($_zp_current_image->isPhoto()) {						
 						if ($c==0) { echo '{'."\n"; } else { echo ',{'."\n"; }
 						echo 'thumb: \''.getImageThumb().'\','."\n";
 						echo 'image: \''.getDefaultSizedImage().'\','."\n";
