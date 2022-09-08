@@ -7,7 +7,7 @@ $(document).ready(function(){
 	$("#relateditems img").addClass("remove-attributes");
 	$(".album-thumb img").addClass("remove-attributes");
 	
-	$('.popup-page').magnificPopup({
+	$('.popup-page, .popup-page-full').magnificPopup({
 		type: 'iframe'
 	});
 	
