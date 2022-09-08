@@ -78,11 +78,13 @@ include ('inc/header.php'); ?>
 							<?php } elseif ($_zp_current_image->isPhoto()) { ?>
 							<a title="<?php echo getBareImageTitle(); ?>" class="image-popup" <?php if (!(getOption('zpbase_nodetailpage'))) { ?>data-source="<?php echo html_encode(getImageURL()); ?>" <?php } ?>href="<?php echo htmlspecialchars(getDefaultSizedImage()); ?>"><?php printImageThumb(getBareImageTitle(),'remove-attributes'); ?></a>
 							<?php } else { ?>
+							<a class="image-thumb popup-page" href="<?php echo html_encode(getImageURL()); ?>?show=imagepage" title="<?php printBareImageTitle();?>">
 								<?php if (getOption('thumb_crop')) {
 								printCustomSizedImage(getAnnotatedImageTitle(),getOption('thumb_size'),getOption('thumb_size'),getOption('thumb_size'),getOption('thumb_size'),getOption('thumb_size'),null,null,'remove-attributes',null,true);
 								} else { 
 								printImageThumb(getBareImageTitle(),'remove-attributes'); 
 								} ?>
+							</a>
 							<?php } ?>
 						<?php } else { ?>
 							<a class="image-thumb" href="<?php echo html_encode(getImageURL()); ?>" title="<?php printBareImageTitle();?>">

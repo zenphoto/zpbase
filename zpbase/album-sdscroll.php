@@ -37,18 +37,17 @@ include ('inc/header.php'); ?>
 					<?php } ?>
 					<?php while (next_image($showall)): ?>
 					<div class="sdscroll-item">
-						<?php if (getOption('zpbase_nodetailpage')) { 
-						printCustomSizedImage(getBareImageTitle(),null,null,getOption('zpbase_sds_maxheight'),null,null,null,null,'remove-attributes',null,true);
-						} else { ?>
-						<a href="<?php echo html_encode(getImageURL()); ?>" title="<?php printBareImageTitle(); ?>">
-							<?php printCustomSizedImage(getBareImageTitle(),null,null,getOption('zpbase_sds_maxheight'),null,null,null,null,'remove-attributes',null,true); ?>
-						</a>
-						<?php } ?>
-						<?php if ((getOption('zpbase_magnific_sds')) || (getOption('zpbase_nodetailpage'))) { 
-						if (getOption('zpbase_magnific_target') == 'imagepage') { ?>
-						<a class="popup-page" href="<?php echo html_encode(getImageURL()); ?>?show=imagepage" title="<?php printBareImageTitle();?>"><img src="<?php echo $_zp_themeroot; ?>/images/zoom-in-2-n.png" alt="<?php echo gettext('Image Details'); ?>" /></a>
-						<?php } elseif ($_zp_current_image->isPhoto()) { ?>
-						<a title ="<?php echo getBareImageTitle(); ?>" class="image-popup" <?php if (!(getOption('zpbase_nodetailpage'))) { ?>data-source="<?php echo html_encode(getImageURL()); ?>" <?php } ?>href="<?php echo htmlspecialchars(getDefaultSizedImage()); ?>"><img src="<?php echo $_zp_themeroot; ?>/images/zoom-in-2-n.png" alt="<?php echo gettext('Preview Image'); ?>" /></a>
+						<?php if (getOption('zpbase_nodetailpage')) { ?>
+							<a title="<?php printBareImageTitle(); ?>" class="popup-page-full" href="<?php echo html_encode(getImageURL()); ?>?show=imagepage">
+						<?php } else { ?>
+							<a title="<?php printBareImageTitle(); ?>" href="<?php echo html_encode(getImageURL()); ?>">
+						<?php }
+								printCustomSizedImage(getBareImageTitle(),null,null,getOption('zpbase_sds_maxheight'),null,null,null,null,'remove-attributes',null,true); ?>
+							</a>
+
+						<?php if (getOption('zpbase_magnific_sds')) { 
+							if ($_zp_current_image->isPhoto()) { ?>
+								<a title ="<?php echo getBareImageTitle(); ?>" class="image-popup" <?php if (!(getOption('zpbase_nodetailpage'))) { ?>data-source="<?php echo html_encode(getImageURL()); ?>" <?php } ?>href="<?php echo htmlspecialchars(getDefaultSizedImage()); ?>"><img src="<?php echo $_zp_themeroot; ?>/images/zoom-in-2-n.png" alt="<?php echo gettext('Preview Image'); ?>" /></a>
 						<?php } 
 						} ?>
 					</div>

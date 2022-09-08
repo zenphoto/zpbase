@@ -74,27 +74,22 @@ include ('inc/header.php'); ?>
 					<?php while (next_image()): ?>
 					<div class="masonry-style-item">
 						<div class="masonry-style-padding">
-							<?php if (getOption('zpbase_nodetailpage')) { 
-								if (getOption('thumb_crop')) {
-								printCustomSizedImage(getAnnotatedImageTitle(),getOption('thumb_size'),getOption('thumb_size'),getOption('thumb_size'),getOption('thumb_size'),getOption('thumb_size'),null,null,'remove-attributes',null,true);
-								} else { 
-								printImageThumb(getBareImageTitle(),'remove-attributes'); 
-								}
-							} else { ?>
-							<a href="<?php echo html_encode(getImageURL()); ?>" title="<?php printBareImageTitle(); ?>">
-								<?php if (getOption('thumb_crop')) {
-								printCustomSizedImage(getAnnotatedImageTitle(),getOption('thumb_size'),getOption('thumb_size'),getOption('thumb_size'),getOption('thumb_size'),getOption('thumb_size'),null,null,'remove-attributes',null,true);
-								} else { 
-								printImageThumb(getBareImageTitle(),'remove-attributes'); 
-								} ?>
-							</a>
-							<?php } ?>
-							<?php if ((getOption('zpbase_magnific_masonry')) || (getOption('zpbase_nodetailpage'))) { 
-							if (getOption('zpbase_magnific_target') == 'imagepage') { ?>
-							<a class="masonry-image-popup" href="<?php echo html_encode(getImageURL()); ?>?show=imagepage" title="<?php printBareImageTitle();?>"><img src="<?php echo $_zp_themeroot; ?>/images/zoom-in-2-n.png" alt="<?php echo gettext('Image Details'); ?>" /></a>
-							<?php } elseif ($_zp_current_image->isPhoto()) { ?>
-							<a title ="<?php echo getBareImageTitle(); ?>" class="masonry-image-popup" <?php if (!(getOption('zpbase_nodetailpage'))) { ?>data-source="<?php echo html_encode(getImageURL()); ?>" <?php } ?>href="<?php echo htmlspecialchars(getDefaultSizedImage()); ?>"><img src="<?php echo $_zp_themeroot; ?>/images/zoom-in-2-n.png" alt="<?php echo gettext('Preview Image'); ?>" /></a>
-							<?php } 
+							<?php if (getOption('zpbase_nodetailpage')) { ?>
+								<a title="<?php printBareImageTitle(); ?>" class="masonry-iframe-popup" href="<?php echo html_encode(getImageURL()); ?>?show=imagepage">
+							<?php } else { ?>
+								<a title="<?php printBareImageTitle(); ?>" href="<?php echo html_encode(getImageURL()); ?>">
+							<?php }
+							if (getOption('thumb_crop')) {
+									printCustomSizedImage(getAnnotatedImageTitle(),getOption('thumb_size'),getOption('thumb_size'),getOption('thumb_size'),getOption('thumb_size'),getOption('thumb_size'),null,null,'remove-attributes',null,true);
+							} else {
+									printImageThumb(getBareImageTitle(),'remove-attributes');
+							} ?>
+								</a>
+
+							<?php if (getOption('zpbase_magnific_masonry')) {
+								if ($_zp_current_image->isPhoto()) { ?>
+								<a title ="<?php echo getBareImageTitle(); ?>" class="masonry-image-popup" <?php if (!(getOption('zpbase_nodetailpage'))) { ?>data-source="<?php echo html_encode(getImageURL()); ?>" <?php } ?>href="<?php echo htmlspecialchars(getDefaultSizedImage()); ?>"><img src="<?php echo $_zp_themeroot; ?>/images/zoom-in-2-n.png" alt="<?php echo gettext('Preview Image'); ?>" /></a>
+								<?php }
 							} ?>
 						</div>
 					</div>

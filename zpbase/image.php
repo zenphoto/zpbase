@@ -4,7 +4,12 @@
 *	http://www.oswebcreations.com
 ================================================== */
 if (isset($_GET['show'])) {
-include ('inc/image-popup.php');
+	if (getOption('zpbase_magnific_target')=="imagepage") {
+		include ('inc/image-popup-details.php');
+	}
+	else {
+		include ('inc/image-popup-nodetails.php');
+	}
 } else {
 
 include ('inc/header.php'); ?>
