@@ -4,7 +4,12 @@
 *	http://www.oswebcreations.com
 ================================================== */
 if (isset($_GET['show'])) {
-include ('inc/image-popup.php');
+	if (getOption('zpbase_magnific_target')=="imagepage") {
+		include ('inc/image-popup-details.php');
+	}
+	else {
+		include ('inc/image-popup-nodetails.php');
+	}
 } else {
 
 include ('inc/header.php'); ?>
@@ -12,34 +17,6 @@ include ('inc/header.php'); ?>
 	<div class="container" id="middle">
 		<div class="row">
 			<div id="content">
-				<div id="image-full" class="block clearfix">
-					<div id="single-img-nav"<?php if (isImageVideo()) echo ' class="video-nav"'; ?>>
-						<?php if (hasPrevImage()) { ?>
-						<a class="prev-link" href="<?php echo html_encode(getPrevImageURL());?>" title="<?php echo gettext("Previous Image"); ?>"><span></span></a>
-						<?php } if (hasNextImage()) { ?>
-						<a class="next-link" href="<?php echo html_encode(getNextImageURL());?>" title="<?php echo gettext("Next Image"); ?>"><span></span></a>
-						<?php } ?>
-					</div>
-					<?php printDefaultSizedImage(getBareImageTitle(),'remove-attributes'); ?>
-					<?php if (getOption('zpbase_verticalscale')) { ?>
-					<script>
-						function resizeFullImageDiv() {
-							var vpw = $(window).width();
-							var vph = $(window).height() - $('#top').outerHeight(true) - parseInt($('#image-full').css('margin-top'),10) - parseInt($('#image-full').css('margin-bottom'),10);
-							if (vph > <?php echo getOption('image_size'); ?>) { vph = <?php echo getOption('image_size'); ?>; }
-							if (vph < vpw) { 
-								$('#image-full').css({'height': vph + 'px'}); 
-							} else {
-								$('#image-full').css({'height': 'auto'}); 
-							}
-						}
-						resizeFullImageDiv();
-						window.onresize = function(event) {
-							resizeFullImageDiv();
-						}
-					</script>
-					<?php } ?>
-				</div>
 				<div id="object-info">
 					<?php 
 					// The following checks and modifications of breadcrumb link backs are necessary when using an album layout without pagination, since default behaviour is to provide a link back to the album page the image is on.
@@ -68,14 +45,70 @@ include ('inc/header.php'); ?>
 							<?php } ?>
 							<span>(<em><?php echo imageNumber().' of '.getNumImages(); ?></em>)</span>
 						</div>
-						<h1 class="notop"><?php printImageTitle(); ?></h1>
+						<h2 class="notop"><?php printImageTitle(); ?></h2>
 					</div>
+				</div>
+
+				<div id="image-full" class="block clearfix">
+					<div id="single-img-nav"<?php if ($_zp_current_image->isVideo()) echo ' class="video-nav"'; ?>>
+						<?php if (hasPrevImage()) { ?>
+						<a class="prev-link" href="<?php echo html_encode(getPrevImageURL());?>" title="<?php echo gettext("Previous Image"); ?>"><span></span></a>
+						<?php } if (hasNextImage()) { ?>
+						<a class="next-link" href="<?php echo html_encode(getNextImageURL());?>" title="<?php echo gettext("Next Image"); ?>"><span></span></a>
+						<?php } ?>
+					</div>
+					<?php printDefaultSizedImage(getBareImageTitle(),'remove-attributes'); ?>
+					<?php if (getOption('zpbase_verticalscale')) { ?>
+					<script>
+						var imgh = <?php echo getFullHeight() ?>;
+						var imgw = <?php echo getFullWidth() ?>;
+						function resizeFullImageDiv() {
+							var vpw = $(window).width();
+							var vph = $(window).height()
+							    - $('#top').outerHeight(true)
+							    - $('#object-info').outerHeight(true)
+							    - parseInt($('#image-full').css('margin-top'),10)
+							    - parseInt($('#image-full').css('margin-bottom'),10);
+							var scalefactor = Math.min(vpw/imgw, vph/imgh);
+							var w = (imgw*scalefactor).toFixed();
+							var h = (imgh*scalefactor).toFixed();
+							$('#image-full').css({'height': h+'px'});
+							if ($('video').length) {
+							    $('video').css({'height': h+'px'});
+							    $('video').css({'width': w+'px'});
+							}
+						}
+
+						window.onresize = function(event) {
+							resizeFullImageDiv();
+						}
+						
+						$(document).ready(function(){
+							resizeFullImageDiv();
+
+							$('video').bind("loadedmetadata", function() {
+							    imgh = this.videoHeight;
+							    imgw = this.videoWidth;
+							    resizeFullImageDiv();
+							});
+
+							// for HTML5 videos enable metadata preloading
+							$('video').not(['preload']).each(function(){
+								$(this).attr('preload','metadata');
+								this.load();
+							});
+						});
+					</script>
+					<?php } ?>
+				</div>
+
+				<div id="object-info-img-bottom">
 					<div id="object-menu">
 						<?php if (getOption('zpbase_date_images')) { ?><span><?php printImageDate(); ?></span><?php } ?>
 						<?php if (getOption('zpbase_social')) include ('inc/socialshare.php'); ?>
 						<?php if (getOption('zpbase_download')) { ?><span><a href="<?php echo html_encode(getFullImageURL()); ?>" title="<?php echo gettext('Download'); ?>"><?php echo gettext('Download').' ('.getFullWidth().' x '.getFullHeight().')'; ?></a></span><?php } ?>
 						<?php if (getOption('zpbase_galss')) { 
-						if (isImagePhoto()) { ?><span><?php printBaseSlideShowLink(); ?></span><?php } ?>
+						if ($_zp_current_image->isPhoto()) { ?><span><?php printBaseSlideShowLink(); ?></span><?php } ?>
 						<?php } elseif (function_exists('printSlideShowLink')) { ?>
 						<span><?php printSlideShowLink(); ?></span>
 						<?php } ?>
@@ -95,7 +128,6 @@ include ('inc/header.php'); ?>
 					<?php printCodeblock(); ?>
 					
 					<?php if (getImageMetaData()) { ?><p><?php printImageMetadata('',false,'imagemetadata'); ?></p><?php } ?>
-					
 				</div>
 				
 				<div class="jump center">
@@ -111,7 +143,6 @@ include ('inc/header.php'); ?>
 				<?php if (getOption('zpbase_disqus')) { ?><div class="block"><?php printDisqusCommentForm(); ?></div>
 				<?php } elseif (function_exists('printCommentForm')) { ?><div class="block"><?php printCommentForm(); ?></div><?php } ?>
 				<?php if (function_exists('printRelatedItems')) { ?><div class="block"><?php printRelatedItems(5,'pages',null,null,'pages'); ?></div><?php } ?>
-				
 			</div>
 		</div>
 	</div>

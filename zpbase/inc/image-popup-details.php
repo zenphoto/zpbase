@@ -36,7 +36,7 @@ if (!defined('WEBPATH')) die();?>
 	</style>
 	<base target="_parent">
 </head>
-<body class="image-popup-page <?php echo $objectclass.' '.$layoutbodyclass; ?>">
+<body id="<?php echo getOption('zpbase_style'); ?>" class="image-popup-page <?php echo $objectclass.' '.$layoutbodyclass; ?>">
 	<?php if ( (getOption('zpbase_analytics')) && (!zp_loggedin(ADMIN_RIGHTS)) ) { ?>
 	<script>
 		<?php if (getOption('zpbase_analytics_type') == 'universal') { ?>
@@ -62,7 +62,7 @@ if (!defined('WEBPATH')) die();?>
 	
 	<div id="image-popup">
 		<div id="image-full" class="block clearfix">
-			<div id="single-img-nav"<?php if (isImageVideo()) echo ' class="video-nav"'; ?>>
+			<div id="single-img-nav"<?php if ($_zp_current_image->isVideo()) echo ' class="video-nav"'; ?>>
 				<?php if (hasPrevImage()) { ?>
 				<a class="prev-link" target="_self" href="<?php echo html_encode(getPrevImageURL());?>?show=imagepage" title="<?php echo gettext("Previous Image"); ?>"><span></span></a>
 				<?php } if (hasNextImage()) { ?>
@@ -75,6 +75,49 @@ if (!defined('WEBPATH')) die();?>
 					$('.remove-attributes').fadeIn();
 				});
 			</script>
+
+			<script>
+				var imgh = <?php echo getFullHeight() ?>;
+				var imgw = <?php echo getFullWidth() ?>;
+
+				function resizeFullImageDiv() {
+					var vpw = $(window).width()
+					    - $('#image-popup-info').outerWidth(true);
+					var vph = $(window).height();
+
+					var scalefactor = Math.min(vpw/imgw, vph/imgh);
+					var w = (imgw*scalefactor).toFixed();
+					var h = (imgh*scalefactor).toFixed();
+					$('div#image-full').css({'height': h+'px'});
+					$('div#image-full img.remove-attributes').attr('height', h);
+					$('div#image-full img.remove-attributes').attr('width', w);
+					if ($('video').length) {
+						$('video').css({'height': h+'px'});
+						$('video').css({'width': w+'px'});
+					}
+				}
+
+				window.onresize = function(event) {
+					resizeFullImageDiv();
+				}
+
+				$(document).ready(function(){
+				resizeFullImageDiv();
+
+				$('video').bind("loadedmetadata", function() {
+					imgh = this.videoHeight;
+					imgw = this.videoWidth;
+					resizeFullImageDiv();
+				});
+
+				// for HTML5 videos enable metadata preloading
+				$('video').not(['preload']).each(function(){
+					$(this).attr('preload','metadata');
+					this.load();
+				});
+			    });
+			</script>
+
 		</div>
 		<div id="image-popup-info">
 			<div><?php echo imageNumber().' of '.getNumImages(); ?> <em>in</em> <?php echo $_zp_current_album->getTitle(); ?></div>

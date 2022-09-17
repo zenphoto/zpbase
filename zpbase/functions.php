@@ -196,7 +196,7 @@ function checkForImages() {
 	global $_zp_current_image, $_zp_current_album, $_zp_current_search, $_zp_gallery;
 	$c = 0;
 	while (next_image()):
-		if (isImagePhoto()) $c++;
+		if ($_zp_current_image->isPhoto()) $c++;
 	endwhile;
 	if ($c > 0) {
 		return true;
@@ -238,7 +238,7 @@ function printBaseSlideShowLink($linktext = null) {
 				$albumnr = $_zp_current_album->getID();
 			}
 			if ($albumnr) {
-				$slideshowlink = rewrite_path(pathurlencode($_zp_current_album->getFileName()) . '/' . _PAGE_ . '/slideshow/', "index.php?p=slideshow&amp;album=" . urlencode($_zp_current_album->getFileName()));
+				$slideshowlink = rewrite_path(pathurlencode($_zp_current_album->getName()) . '/' . _PAGE_ . '/slideshow/', "index.php?p=slideshow&amp;album=" . urlencode($_zp_current_album->getName()));
 			} else {
 				$slideshowlink = rewrite_path('/' . _PAGE_ . '/slideshow/', "index.php?p=slideshow");
 				$slideshowhidden = '<input type="hidden" name="favorites_page" value="1" />';
@@ -348,7 +348,7 @@ function printBaseSlideShowLink($linktext = null) {
 					$filename = $images[$idx];
 					$image = newImage($albumobj, $filename);
 				}
-				if (isImagePhoto($image)) {
+				if ($image->isPhoto()) {
 					makeImageCurrent($image);
 					echo '{'."\n";
 						echo 'thumb: \''.getImageThumb().'\','."\n";
