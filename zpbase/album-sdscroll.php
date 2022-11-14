@@ -23,7 +23,7 @@ include ('inc/header.php'); ?>
 							<?php printCustomAlbumThumbImage(getBareAlbumTitle(),null,null,getOption('zpbase_sds_maxheight'),null,null,null,null,'remove-attributes'); ?>
 						</a>
 						<div class="sdscroll-albuminfo">
-							<h3><?php printAlbumTitle(); ?></h3>
+							<h3><?php printAlbumTitle(); printCurrentPageAppendix(); ?></h3>
 							<p class="album-desc"><?php echo strip_tags(truncate_string(getAlbumDesc(),140,'...')); ?></p>
 							<div class="album-stats">
 								<?php if ( (getNumAlbums() > 0) && (getNumImages() > 0) ) { $divider='- '; } else { $divider=''; } ?>

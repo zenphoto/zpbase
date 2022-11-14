@@ -20,7 +20,7 @@ include ('inc/header.php'); ?>
 					<?php } ?>
 					<div id="object-title">
 						<div id="breadcrumb"><?php printParentBreadcrumb('',' / ',' / '); ?></div>
-						<h1><?php printAlbumTitle(); ?></h1>
+						<h1><?php printAlbumTitle(); printCurrentPageAppendix(); ?></h1>
 					</div>
 					<div id="object-menu">
 						<?php if ((getOption('zpbase_date_albums')) && ($_zp_gallery_page == 'album.php')) { ?><span><?php printAlbumDate(); ?></span><?php } ?>

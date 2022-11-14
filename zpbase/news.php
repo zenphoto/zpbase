@@ -63,12 +63,12 @@ include ('inc/header.php'); $zpbase_newsstyle = getOption('zpbase_newsstyle'); ?
 					<div id="object-title">
 						<?php if (in_context(ZP_ZENPAGE_NEWS_CATEGORY)) { ?>
 						<div><?php printNewsIndexURL($newsname); echo ' / '; ?></div>
-						<h1><?php printCurrentNewsCategory(); ?></h1>
+						<h1><?php printCurrentNewsCategory(); printCurrentPageAppendix(); ?></h1>
 						<?php } else if (in_context(ZP_ZENPAGE_NEWS_DATE)) { ?>
 						<div><?php printNewsIndexURL($newsname); echo ' / '; ?></div>
-						<h1><?php printCurrentNewsArchive(); ?></h1>
+						<h1><?php printCurrentNewsArchive(); printCurrentPageAppendix(); ?></h1>
 						<?php } else { ?>
-						<h1><?php echo $newsname; ?></h1>
+						<h1><?php echo $newsname; printCurrentPageAppendix(); ?></h1>
 						<?php } ?>
 					</div>
 					<div id="object-desc">
@@ -108,7 +108,7 @@ include ('inc/header.php'); $zpbase_newsstyle = getOption('zpbase_newsstyle'); ?
 				<?php } else { ?>
 				<div id="page-nav" class="clearfix">
 					<div class="jump"><?php printBaseAlbumMenuJump('count',gettext('Gallery Index')); ?></div>
-					<?php printNewsPageListWithNav(gettext('Next »'), gettext('« Prev'),true,'pagination',true); ?>
+					<?php printNewsPageListWithNav(gettext('Next ï¿½'), gettext('ï¿½ Prev'),true,'pagination',true); ?>
 				</div>
 				<?php } ?>
 				

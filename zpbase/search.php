@@ -28,7 +28,7 @@ if ($total == 0) {
 				<?php if (getOption('zpbase_archive')) { ?>
 				
 				<div class="block searchwrap">	
-					<h1 class="notop"><?php echo gettext('Search'); ?></h1>
+					<h1 class="notop"><?php echo gettext('Search'); printCurrentPageAppendix(); ?></h1>
 					<?php printSearchForm('','search',$_zp_themeroot.'/images/magnifying_glass_16x16.png',gettext('Search gallery'),$_zp_themeroot.'/images/list_12x11.png'); ?>	
 					<?php
 					$searchwords = getSearchWords();
