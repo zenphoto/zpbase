@@ -115,7 +115,7 @@ include ('inc/header.php'); ?>
 					</div>
 					<div id="object-desc"><?php printImageDesc(); ?></div>
 					<?php if (function_exists('printGoogleMap')) { ?><div id="map-wrap"><?php printGoogleMap('Google Map',null,'hide'); ?></div><?php } ?>
-					<?php if (function_exists('printOpenStreetMap')) { ?><div id="map-wrap"><?php printOpenStreetMap(); ?></div><?php } ?>
+					<?php if (function_exists('printOpenStreetMap')) { ?><div id="map-wrap"><?php openStreetMap::printOpenStreetMap(); ?></div><?php } ?>
 					<?php if (getImageData('copyright')) { ?><p class="image-copy"><?php echo getImageData('copyright'); ?></p><?php } ?>
 					
 					<?php if (getOption('zpbase_archive')) {
