@@ -262,7 +262,7 @@ function printBaseSlideShowLink($linktext = null) {
 
 
 	function printBaseSlideShow() {
-		global $_zp_gallery, $_zp_gallery_page, $_myFavorites, $_zp_conf_vars, $_zp_themeroot, $isMobile, $isTablet;
+		global $_zp_gallery, $_zp_gallery_page, $_myFavorites, $_zp_conf_vars, $_zp_themeroot, $isMobile, $isTablet, $_zp_db;
 		if (!isset($_POST['albumid'])) {
 			return '<div class="errorbox" id="message"><h2>' . gettext('Invalid linking to the slideshow page.') . '</h2></div>';
 		}
@@ -303,7 +303,7 @@ function printBaseSlideShowLink($linktext = null) {
 			$searchdate = $search->getSearchDate();
 			$searchfields = $search->getSearchFields(true);
 			$page = $search->page;
-			$returnpath = getSearchURL($searchwords, $searchdate, $searchfields, $page);
+			$returnpath = SearchEngine::getSearchURL($searchwords, $searchdate, $searchfields, $page);
 			$albumobj = new AlbumBase(NULL, false);
 			$albumobj->setTitle(gettext('Search'));
 			$albumobj->images = $search->getImages(0);
@@ -314,13 +314,13 @@ function printBaseSlideShowLink($linktext = null) {
 				$returnpath = rewrite_path($_myFavorites->getLink() . '/' . $pagenumber . '/', FULLWEBPATH . '/index.php?p=favorites' . '&page=' . $pagenumber);
 				$albumtitle = gettext('Favorites');
 			} else {
-				$albumq = query_single_row("SELECT title, folder FROM " . prefix('albums') . " WHERE id = " . $albumid);
-				$albumobj = newAlbum($albumq['folder']);
+				$albumq = $_zp_db->querySingleRow("SELECT title, folder FROM " . $_zp_db->prefix('albums') . " WHERE id = " . $albumid);
+				$albumobj = Albumbase::newAlbum($albumq['folder']);
 				$albumtitle = $albumobj->getTitle();
 				if (empty($_POST['imagenumber'])) {
 					$returnpath = $albumobj->getLink($pagenumber);
 				} else {
-					$image = newImage($albumobj, sanitize($_POST['imagefile']));
+					$image = Image::newImage($albumobj, sanitize($_POST['imagefile']));
 					$returnpath = $image->getLink();
 				}
 			}
@@ -342,11 +342,11 @@ function printBaseSlideShowLink($linktext = null) {
 			for ($c = 0, $idx = 0; $c < $numberofimages; $c++, $idx++) {
 				if (is_array($images[$idx])) {
 					$filename = $images[$idx]['filename'];
-					$album = newAlbum($images[$idx]['folder']);
-					$image = newImage($album, $filename);
+					$album = Albumbase::newAlbum($images[$idx]['folder']);
+					$image = Image::newImage($album, $filename);
 				} else {
 					$filename = $images[$idx];
-					$image = newImage($albumobj, $filename);
+					$image = Image::newImage($albumobj, $filename);
 				}
 				if ($image->isPhoto()) {
 					makeImageCurrent($image);

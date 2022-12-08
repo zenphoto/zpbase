@@ -170,9 +170,11 @@ class ThemeOptions {
 				'order' => 14.2,
 				'desc' => gettext("Uncheck to have a separate homepage (Home) and Gallery index page (Gallery).  If unchecked, the html (source) of the homepage comes form the Gallery Description in the Gallery options.")),
 			
-			array('type' => OPTION_TYPE_NOTE, 
+			array('key' => 'zpbase_options_disqus_note',
+				'type' => OPTION_TYPE_NOTE, 
 				'order' => 15,
 				'desc' => gettext('<h2>Disqus Commenting</h2><hr />')),			
+			
 			gettext('Use Disqus Comments') => array('key' => 'zpbase_disqus', 'type' => OPTION_TYPE_CHECKBOX, 
 				'order' => 16,
 				'desc' => gettext("Check to use Disqus comments, free account required on <a href=\"http://disqus.com\" target=\"_blank\">disqus.com</a>.")),
@@ -185,9 +187,11 @@ class ThemeOptions {
 				'desc' => gettext('Disqus comment forms will be presented on the checked page types.<div class="notebox">Note: Toggling comments on/off is also controlled on each individual image/album/article/page admin page.</div>')),
 	
 			
-			array('type' => OPTION_TYPE_NOTE, 
+			array('key' => 'zpbase_options_multiple_layout_note',
+				'type' => OPTION_TYPE_NOTE, 
 				'order' => 20,
 				'desc' => gettext('<h2>Multiple Layout Options/Defaults</h2><hr />')),
+			
 			gettext('Gallery Index Layout') => array('key' => 'zpbase_indexlayout', 'type' => OPTION_TYPE_SELECTOR,
 				'selections' => array(
 					gettext('Standard Grid') => 'index-grid', 
@@ -244,9 +248,11 @@ class ThemeOptions {
 				'order'=>27,
 				'desc' => gettext('Select the infinite scroll behavior. Auto will load pages/items automatically when user scrolls. Manual first will require user to click next the first time then load items auto after that (allows user to get to the footer first time if so chooses). Manual always requires user click to load additional items.')),
 				
-			array('type' => OPTION_TYPE_NOTE, 
+			array('key' => 'zpbase_options_galleria_slideshow_note',
+				'type' => OPTION_TYPE_NOTE, 
 				'order' => 30,
 				'desc' => gettext("<h2>Galleria Layout and Slideshow Options - <em>Note: Options apply to the custom slideshow, and both album layout and homepage layout if set.</em></h2><hr />")),
+			
 			gettext('Galleria Default Slideshow Engine') => array('key' => 'zpbase_galss', 'type' => OPTION_TYPE_CHECKBOX, 
 				'order' => 31,
 				'desc' => gettext("Check to use the custom Galleria slideshow as the default slideshow engine for all layouts. Note that slideshow links will not appear on layouts already using galleria, as the slideshow is already available in that layout. It is recommended if using this slideshow to disable the core slideshow plugin to prevent uneeded script loading.")),
@@ -304,9 +310,11 @@ class ThemeOptions {
 				'multilingual' => 0,
 				'desc' => gettext('Enter the image pixel size to create for the large, fullscreen slideshow (1200 default).')),
 			
-			array('type' => OPTION_TYPE_NOTE, 
+			array('key' => 'zpbase_options_smooth_scroll_note',
+				'type' => OPTION_TYPE_NOTE, 
 				'order' => 45,
 				'desc' => gettext("<h2>Smooth DIV Scroll Layout Options</h2><hr />")),
+				
 			gettext('Pagination') => array('key' => 'zpbase_sds_pagination', 'type' => OPTION_TYPE_RADIO,
 				'order' => 46,
 				'buttons' => array(
@@ -320,9 +328,11 @@ class ThemeOptions {
 				'multilingual' => 0,
 				'desc' => gettext('Enter the max height of the scrolling division. This will scale down on smaller displays vias css. SDS creates new cached images for it\'s layout.  You can recache batches using the cache manager plugin.')),
 			
-			array('type' => OPTION_TYPE_NOTE, 
+			array('key' => 'zpbase_options_magnific_popup_note',
+				'type' => OPTION_TYPE_NOTE, 
 				'order' => 50,
 				'desc' => gettext("<h2>Magnific Popup Options</h2><hr />")),
+				
 			gettext('Enable Magnific Popup on') => array('key' => 'zpbase_magnific_enabled','type' => OPTION_TYPE_CHECKBOX_ARRAY,
 				'order' => 51,
 				'checkboxes' => $magnific_checkboxes,
@@ -335,9 +345,11 @@ class ThemeOptions {
 								),
 				'desc' => gettext('Image popup can be either just the image or a custom image detail page showing (if enabled) the image, title, description, tags, rating, comments. <div class="notebox">Note: Image+ Details option goes very well with the option above - "no image details page".</div>')),
 			
-			array('type' => OPTION_TYPE_NOTE, 
+			array('key' => 'zpbase_options_google_fonts_note',
+				'type' => OPTION_TYPE_NOTE, 
 				'order' => 60,
 				'desc' => gettext("<h2>Advanced - Custom Google fonts and analytics, CSS, font size - <em>Allows custom CSS styles and usage of additional Google Fonts as well.</em></h2><hr />")),
+			
 			gettext('Custom font for body text') => array('key' => 'zpbase_googlefont1', 'type' => OPTION_TYPE_SELECTOR,
 				'selections' => array(
 					gettext('NONE') => '',
@@ -391,8 +403,7 @@ class ThemeOptions {
 			gettext('Base Font Size') => array('key' => 'zpbase_fontsize', 'type' => OPTION_TYPE_TEXTBOX, 
 				'order'=>63, 
 				'multilingual' => 0,
-				'desc' => gettext('Enter a base font size in pixels (10-18).  All other font-sizes are taken as percentages of this. Note: Any number outside this range will default back to 12.')),
-			
+				'desc' => gettext('Enter a base font size in pixels (10-18).  All other font-sizes are taken as percentages of this. Note: Any number outside this range will default back to 12.')),		
 			gettext('Custom CSS') => array('key' => 'zpbase_customcss', 'type' => OPTION_TYPE_TEXTAREA, 
 				'order'=>64, 
 				'multilingual' => 0,
@@ -406,9 +417,11 @@ class ThemeOptions {
 				'buttons' => array(gettext('Universal')=>'universal', gettext('Classic')=>'classic'),
 				'desc' => gettext("Select what type of analytics you are using. See your Google analytics account for explanations.")),
 				
-			array('type' => OPTION_TYPE_NOTE, 
+			array('key' => 'zpbase_options_footer_note',
+				'type' => OPTION_TYPE_NOTE, 
 				'order' => 70,
 				'desc' => gettext("<h2>Site Footer Options</h2><hr />")),
+				
 			gettext('Facebook Link') => array('key' => 'zpbase_facebook', 'type' => OPTION_TYPE_TEXTBOX, 
 				'order'=>71, 
 				'multilingual' => 0,
@@ -424,10 +437,7 @@ class ThemeOptions {
 			gettext('Copyright Text') => array('key' => 'zpbase_copy', 'type' => OPTION_TYPE_TEXTBOX, 
 				'order'=>74, 
 				'multilingual' => 0,
-				'desc' => gettext('Edit text for footer copyright. Leave blank to omit.'))
-			
-		
-							
+				'desc' => gettext('Edit text for footer copyright. Leave blank to omit.'))					
 		);
 	}
 	
