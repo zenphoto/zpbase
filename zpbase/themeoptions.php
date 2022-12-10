@@ -80,8 +80,8 @@ class ThemeOptions {
 		setThemeOptionDefault('zpbase_analytics','');
 		setThemeOptionDefault('zpbase_analytics_type','universal');
 		// set image sizes based on maxwidth
-		setThemeOption('image_size',round(getThemeOption('zpbase_maxwidth')),null,'zpbase');
-		setThemeOption('thumb_size',round(.31 * getThemeOption('zpbase_maxwidth')),null,'zpbase');
+		setThemeOption('image_size',round(intval(getThemeOption('zpbase_maxwidth'))),null,'zpbase');
+		setThemeOption('thumb_size',round(.31 * intval(getThemeOption('zpbase_maxwidth'))),null,'zpbase');
 		if (class_exists('cacheManager')) {
 			$me = basename(dirname(__FILE__));
 			cacheManager::deleteCacheSizes($me);
