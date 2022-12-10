@@ -21,7 +21,7 @@ class ThemeOptions {
 		// set zpbase option defaults
 		setThemeOptionDefault('zpbase_pnglogo', '');
 		setThemeOptionDefault('zpbase_style', 'light');
-		setThemeOptionDefault('zpbase_maxwidth', '960');
+		setThemeOptionDefault('zpbase_maxwidth', 960);
 		setThemeOptionDefault('zpbase_verticalscale', true);
 		setThemeOptionDefault('zpbase_align', 'center');
 		setThemeOptionDefault('zpbase_date_albums', true);
@@ -48,14 +48,14 @@ class ThemeOptions {
 		setThemeOptionDefault('zpbase_galhomeop', 'albums');
 		setThemeOptionDefault('zpbase_galhomecount', 30);
 		setThemeOptionDefault('zpbase_galautoplay', false);
-		setThemeOptionDefault('zpbase_galinterval', '4000');
+		setThemeOptionDefault('zpbase_galinterval', 4000);
 		setThemeOptionDefault('zpbase_galtrans', 'fadeslide');
-		setThemeOptionDefault('zpbase_galtranspeed', '400');
+		setThemeOptionDefault('zpbase_galtranspeed', 400);
 		setThemeOptionDefault('zpbase_galhistory', true);
 		setThemeOptionDefault('zpbase_galbigsize', 1200);
 		setThemeOptionDefault('zpbase_googlefont1', '');	
 		setThemeOptionDefault('zpbase_googlefont2', '');	
-		setThemeOptionDefault('zpbase_fontsize', '12');
+		setThemeOptionDefault('zpbase_fontsize', 12);
 		setThemeOptionDefault('zpbase_customcss', '');
 		setThemeOptionDefault('zpbase_bg', '');
 		setThemeOptionDefault('zpbase_facebook', '');
@@ -80,8 +80,8 @@ class ThemeOptions {
 		setThemeOptionDefault('zpbase_analytics','');
 		setThemeOptionDefault('zpbase_analytics_type','universal');
 		// set image sizes based on maxwidth
-		setThemeOption('image_size',round(getOption('zpbase_maxwidth')),null,'zpbase');
-		setThemeOption('thumb_size',round(.31 * (getOption('zpbase_maxwidth'))),null,'zpbase');
+		setThemeOption('image_size',round(getThemeOption('zpbase_maxwidth')),null,'zpbase');
+		setThemeOption('thumb_size',round(.31 * getThemeOption('zpbase_maxwidth')),null,'zpbase');
 		if (class_exists('cacheManager')) {
 			$me = basename(dirname(__FILE__));
 			cacheManager::deleteCacheSizes($me);
