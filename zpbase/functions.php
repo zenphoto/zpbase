@@ -51,7 +51,7 @@ function my_checkPageValidity($request, $gallery_page, $page) {
 			$gallery_page = 'index.php'; //	same as an album gallery index
 			break;
 		case 'index.php':
-			if (!extensionEnabled('zenpage') || (getOption('zbase_indexlayout') != 'news')) { // only one index page if zenpage plugin is enabled & displaying
+			if (!extensionEnabled('zenpage') || (getOption('zpbase_indexlayout') != 'news')) { // only one index page if zenpage plugin is enabled & displaying
 				break;
 			}
 		default:
@@ -82,7 +82,7 @@ function newsOnIndex($link, $obj, $page) {
 
 if (!OFFSET_PATH) {
 	$_zp_page_check = 'my_checkPageValidity';
-	if (extensionEnabled('zenpage') && (getOption('zbase_indexlayout') == 'news')) { // only one index page if zenpage plugin is enabled & displaying
+	if (extensionEnabled('zenpage') && (getOption('zpbase_indexlayout') == 'news')) { // only one index page if zenpage plugin is enabled & displaying
 		zp_register_filter('getLink', 'newsOnIndex');
 	}
 }
