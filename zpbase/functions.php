@@ -3,7 +3,7 @@
 * 	This file (functions.php) is auto included when setting up the environment for each page, no need to include it manually.
 *	http://www.oswebcreations.com	
 ================================================== */
-// force UTF-8 �
+// force UTF-8
 
 // Check for lack of zenphoto setting thumb and image sizes until visiting theme option page (can't figure out why this is needed).
 if (!getOption('thumb_size')) { 
@@ -14,11 +14,16 @@ if (!getOption('thumb_size')) {
 	$noset = false;
 }
 
-// Check for mobile and tablets, set some options if so...
-require_once (SERVERPATH . '/' . ZENFOLDER . '/' . PLUGIN_FOLDER . '/mobileTheme/Mobile_Detect.php');
-$detect = new Mobile_Detect;
-if ($detect->isTablet()) { $isTablet = true; } else { $isTablet = false; }
-if ($detect->isMobile() && !$detect->isTablet()) { $isMobile = true; } else { $isMobile = false; }
+// Check for mobile and tablets, and set some options
+if ( !extensionEnabled('mobileTheme') ) {
+	enableExtension('mobileTheme', 9999);
+}
+$isMobile = false;
+if ( class_exists('mobile') ) {
+	$detect = new mobile();
+	if ($detect->isTablet()) { $isTablet = true; } else { $isTablet = false; }
+	if ($detect->isMobile() && !$detect->isTablet()) { $isMobile = true; } else { $isMobile = false; }
+}
 
 if ($isMobile) { 
 	setOption('image_size',400,false); 
