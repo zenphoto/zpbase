@@ -1,14 +1,6 @@
 **Please understand that the ZenphotoCMS team has no resources to actively develop or maintain this theme. But we can help fix bugs with newer releases if pointed to them. Contributions via pull requests are also welcome.**
 
-zpbase
-======
-
-**http://www.oswebcreations.com**
-
-A Zenphoto theme
-
-About
---------------
+# zpbase
 
 Install/upload the "zpbase" folder into the "themes" folder of your Zenphoto installation. Activate theme and set options in the backend administration of Zenphoto.
 
