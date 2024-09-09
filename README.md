@@ -1,4 +1,4 @@
-**Please understand though that the ZenphotoCMS team has no resources to actively develop or maintain these themes. But we can help fixing bugs with newer releases if pointed to it. Contributions via pull requests are also welcome.**
+**Please understand that the ZenphotoCMS team has no resources to actively develop or maintain this theme. But we can help fix bugs with newer releases if pointed to them. Contributions via pull requests are also welcome.**
 
 zpbase
 ======
