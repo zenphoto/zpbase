@@ -229,7 +229,7 @@ if (!defined('WEBPATH')) die();?>
 					</li>
 					<?php } ?>
 					<?php if ((function_exists('getNewsIndexURL')) && (getOption('zpbase_usenews'))) { ?>
-					<?php if (getNumNews(true) > 0) { ?>
+					<?php if (function_exists('getNumNews') && getNumNews(true) > 0) { ?>
 					<li <?php if ($_zp_gallery_page == "news.php") { ?>class="active" <?php } ?>>
 						<a href="<?php echo getNewsIndexURL(); ?>"><?php echo $newsname; ?></a>
 					</li>
