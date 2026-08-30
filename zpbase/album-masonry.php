@@ -48,7 +48,7 @@ include ('inc/header.php'); ?>
 				</div>
 				<div id="spinner"></div>	
 				<div id="masonry-style">
-					<?php if (isAlbumPage()) { ?>
+					<?php if (hasAlbums()) { ?>
 					<?php while (next_album()): ?>
 					<div class="masonry-style-item album">
 						<div class="masonry-style-padding">

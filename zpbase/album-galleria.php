@@ -43,7 +43,7 @@ include ('inc/header.php'); ?>
 					var data = [
 						<?php
 						$c=0;
-						if (isAlbumPage()) { 
+						if (hasAlbums()) { 
 						while (next_album(true)):
 						if ($c==0) { echo '{'."\n"; } else { echo ',{'."\n"; }
 						echo 'thumb: \''.getAlbumThumb().'\','."\n";

@@ -447,7 +447,7 @@ class ThemeOptions {
 		if($option == "zpbase_pnglogo") { ?>
 			<select id="zpbase_pnglogo" name="zpbase_pnglogo">
 				<option value="" style="background-color:LightGray"><?php echo gettext('*Use Gallery Name Text'); ?></option>';
-				<?php zp_apply_filter('theme_head');
+				<?php filter::applyFilter('theme_head');
 				generateListFromFiles($currentValue, SERVERPATH.'/'.UPLOAD_FOLDER,'');
 				?>
 			</select>	
@@ -455,7 +455,7 @@ class ThemeOptions {
 		if($option == "zpbase_bg") { ?>
 			<select id="zpbase_bg" name="zpbase_bg">
 				<option value="" style="background-color:LightGray"><?php echo gettext('* no bg image'); ?></option>';
-				<?php zp_apply_filter('theme_head');
+				<?php filter::applyFilter('theme_head');
 				generateListFromFiles($currentValue, SERVERPATH.'/'.UPLOAD_FOLDER,'');
 				?>
 			</select>	

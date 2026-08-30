@@ -46,7 +46,7 @@ include ('inc/header.php'); ?>
 					<?php if (function_exists('printOpenStreetMap')) { ?><div id="map-wrap"><?php openStreetMap::printOpenStreetMap(); ?></div><?php } ?>
 				</div>
 					
-				<?php if (isAlbumPage()) { ?>
+				<?php if (hasAlbums()) { ?>
 				<div class="image-grid albums">
 					<?php while (next_album()): ?>
 					<div class="image-unit">

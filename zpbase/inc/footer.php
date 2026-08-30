@@ -52,6 +52,6 @@
 			
 		</div>
 	</div>
-<?php zp_apply_filter('theme_body_close'); ?>
+<?php filter::applyFilter('theme_body_close'); ?>
 </body>
 </html>

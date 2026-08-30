@@ -11,7 +11,7 @@ if (!defined('WEBPATH')) die();?>
 <html>
 <head>
 	<meta charset="<?php echo LOCAL_CHARSET; ?>" />
-	<?php zp_apply_filter('theme_head');
+	<?php filter::applyFilter('theme_head');
 	$objectclass = str_replace (" ", "", getBareImageTitle()).'-'.$_zp_current_image->getID();
 	printHeadTitle(); ?>
 	<meta name="description" content="<?php echo truncate_string(getBareImageDesc(),150,'...'); ?>" />	
@@ -58,7 +58,7 @@ if (!defined('WEBPATH')) die();?>
 		<?php } ?>
 	</script>
 	<?php } ?>
-	<?php zp_apply_filter('theme_body_open'); ?>
+	<?php filter::applyFilter('theme_body_open'); ?>
 	
 	<div id="image-popup">
 		<div id="image-full" class="block clearfix" style="width:100%;">

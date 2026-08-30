@@ -16,7 +16,7 @@ include ('inc/header.php'); ?>
 			<div id="content">
 				<div id="spinner"></div>	
 				<div id="makeMeScrollable">
-					<?php if (isAlbumPage()) { ?>
+					<?php if (hasAlbums()) { ?>
 					<?php while (next_album($showall)): ?>
 					<div class="sdscroll-item">
 						<a class="album-thumb" href="<?php echo html_encode(getAlbumURL()); ?>" title="<?php printBareAlbumTitle(); ?>">

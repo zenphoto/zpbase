@@ -13,7 +13,7 @@ if (!defined('WEBPATH')) die();
 
 <head>
 	<meta charset="<?php echo LOCAL_CHARSET; ?>" />
-	<?php zp_apply_filter('theme_head'); ?>
+	<?php filter::applyFilter('theme_head'); ?>
 	<meta name="viewport" content="width=device-width" />
 	<title><?php echo gettext('Slideshow').' | '.getBareGalleryTitle(); ?></title>
 	<link rel="stylesheet" type="text/css" href="<?php echo $_zp_themeroot; ?>/js/galleria/themes/classic/galleria.classic.min.css" />
@@ -27,17 +27,17 @@ if (!defined('WEBPATH')) die();
 <?php } else { ?>
 
 <head>
-	<?php zp_apply_filter('theme_head'); ?>
+	<?php filter::applyFilter('theme_head'); ?>
 	<meta charset="<?php echo LOCAL_CHARSET; ?>" />
 	<title><?php echo gettext('Slideshow').' | '.getBareGalleryTitle(); ?></title>
 	<link rel="stylesheet" href="<?php echo $_zp_themeroot; ?>/css/style.css" type="text/css" />
 </head>
 <body>
-	<?php zp_apply_filter('theme_body_open'); ?>
+	<?php filter::applyFilter('theme_body_open'); ?>
 	<div id="slideshowpage">
 		<?php printSlideShow(true,true); ?>
 	</div>
-	<?php zp_apply_filter('theme_body_close'); ?>
+	<?php filter::applyFilter('theme_body_close'); ?>
 </body>
 
 <?php } ?>

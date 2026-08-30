@@ -79,7 +79,7 @@ if ($total == 0) {
 					} 
 					} ?>
 					
-					<?php if (isAlbumPage()) { ?>
+					<?php if (hasAlbums()) { ?>
 					<?php while (next_album()): ?>
 					<div class="masonry-style-item album">
 						<div class="masonry-style-padding">
@@ -161,7 +161,7 @@ if ($total == 0) {
 				</div>
 				<?php } ?>
 				
-				<?php if (isAlbumPage()) { ?>
+				<?php if (hasAlbums()) { ?>
 				<div class="image-grid albums">
 					<?php while (next_album()): ?>
 					<div class="image-unit">

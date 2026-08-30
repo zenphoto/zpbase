@@ -12,7 +12,7 @@ if (!defined('WEBPATH')) die();?>
 <html>
 <head>
 	<meta charset="<?php echo LOCAL_CHARSET; ?>" />
-	<?php zp_apply_filter('theme_head');
+	<?php filter::applyFilter('theme_head');
 	$zpbase_metadesc = truncate_string(getBareGalleryDesc(),150,'...');	
 	// Set some things depending on what page we are on...
 	switch ($_zp_gallery_page) {
@@ -203,7 +203,7 @@ if (!defined('WEBPATH')) die();?>
 		<?php } ?>
 	</script>
 	<?php } ?>
-	<?php zp_apply_filter('theme_body_open'); ?>
+	<?php filter::applyFilter('theme_body_open'); ?>
 	
 	<?php if ( ($noset) && (zp_loggedin(ADMIN_RIGHTS)) ) { ?><div id="noset"><?php echo 'Admin Notice: Since you recently installed zpBase, switched themes or changed the Zenphoto installation, you need to <a style="color:black;text-decoration:underline;" href="'.WEBPATH.'/'.ZENFOLDER.'/admin-options.php?page=options&amp;tab=theme&amp;optiontheme=zpbase">visit the theme options page to set some things →</a>'; ?></div><?php } ?>
 	<a href="#" class="scrollup" title="<?php echo gettext('Scroll to top'); ?>"><?php echo gettext('Scroll'); ?></a>
